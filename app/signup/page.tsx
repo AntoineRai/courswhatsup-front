@@ -1,10 +1,11 @@
 import React from "react";
+import SignUp from "@/components/auth/signup";
 
 const Page = () => {
   return (
-    <main className="flex flex-col items-center justify-center gap-4">
-      Ceci est la page de SIGNUP
-    </main>
+    <div className="h-screen w-full flex flex-col items-center justify-center gap-4">
+      <SignUp />
+    </div>
   );
 };
 
