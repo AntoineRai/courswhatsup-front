@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
 
 const formSchema = z
   .object({
@@ -45,11 +46,20 @@ const SignUp = () => {
     },
   });
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    axios.post("http://localhost:3001/login/login",{
+      mail: form.getValues().emailAdress,
+      password: form.getValues().password,
+    }).then((res) => {
+      console.log(res);
+    }).catch((err) => {
+      console.log(err);
+    });
+  };
 
   return (
     <Card className="pr-4">
-      <CardHeader>Créez votre compte ! 🔥</CardHeader>
+      <CardHeader className="font-bold">Créez votre compte ! 🔥</CardHeader>
       <CardDescription className="pl-6 pb-4">
         Rejoignez le monde entier !
       </CardDescription>

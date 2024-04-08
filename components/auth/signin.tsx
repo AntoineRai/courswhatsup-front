@@ -45,7 +45,7 @@ const SignIn = () => {
 
   return (
     <Card className="pr-4">
-      <CardHeader>Identifiez vous ! 🔥</CardHeader>
+      <CardHeader className="font-bold">Identifiez vous ! 🔥</CardHeader>
       <CardDescription className="pl-6 pb-4">
         Connectez-vous au monde entier !
       </CardDescription>
