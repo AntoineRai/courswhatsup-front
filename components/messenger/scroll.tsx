@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const Scroll = () => {
   const contacts = [
-    { id: 1, name: "John Doe", email: "mail@example.com" },
+    { id: 1, name: "Johsn Doe", email: "mail@example.com" },
     { id: 2, name: "Jane Doe", email: "mail@example.fr" },
     { id: 3, name: "Alice Smith", email: "alice@example.com" },
     { id: 4, name: "Bob Johnson", email: "bob@example.com" },
