@@ -12,14 +12,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -44,62 +37,54 @@ const SignIn = () => {
   };
 
   return (
-    <Card className="pr-4">
-      <CardHeader className="font-bold">Identifiez vous ! 🔥</CardHeader>
-      <CardDescription className="pl-6 pb-4">
-        Connectez-vous au monde entier !
-      </CardDescription>
-      <CardContent>
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(handleSubmit)}
-            className="max-w-md w-full flex flex-col gap-4"
-          >
-            <FormField
-              control={form.control}
-              name="emailAdress"
-              render={({ field }) => {
-                return (
-                  <FormItem>
-                    <FormLabel>Adresse Mail</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="mail@example.com"
-                        type="email"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                );
-              }}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => {
-                return (
-                  <FormItem>
-                    <FormLabel>Mot de passe</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Mot de passe"
-                        type="password"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                );
-              }}
-            />
-            <Button type="submit" className="w-full">
-              Se connecter
-            </Button>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+    <Form {...form}>
+      <form
+        onSubmit={form.handleSubmit(handleSubmit)}
+        className="max-w-md w-full flex flex-col gap-4"
+      >
+        <FormField
+          control={form.control}
+          name="emailAdress"
+          render={({ field }) => {
+            return (
+              <FormItem>
+                <FormLabel>Adresse Mail</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="mail@example.com"
+                    type="email"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            );
+          }}
+        />
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => {
+            return (
+              <FormItem>
+                <FormLabel>Mot de passe</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Mot de passe"
+                    type="password"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            );
+          }}
+        />
+        <Button type="submit" className="w-full">
+          Se connecter
+        </Button>
+      </form>
+    </Form>
   );
 };
 

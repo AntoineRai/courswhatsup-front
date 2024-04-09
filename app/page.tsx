@@ -1,11 +1,13 @@
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import Scroll from "@/components/messenger/scroll";
 
 export default function Home() {
   return (
-    <main className="h-full flex flex-col items-center justify-center gap-4">
-      <h1>Ceci est la page de départ !</h1>
+    <main className="h-full w-full flex flex-col items-center justify-center overflow-hidden">
+      <div className="w-[90%] h-[90%] border-4 rounded-xl">
+        <div className="h-full w-1/4 border-r-4">
+          <Scroll />
+        </div>
+      </div>
     </main>
   );
 }
