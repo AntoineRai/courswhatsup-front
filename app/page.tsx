@@ -1,5 +1,8 @@
 import HeaderMessenger from "@/components/messenger/header_messenger";
 import Scroll from "@/components/messenger/scroll";
+import ContentMessenger from "@/components/messenger/content_messenger";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -17,7 +20,13 @@ export default function Home() {
           <div className="h-[10%] border-b-2 flex flex-col justify-center px-4">
             <HeaderMessenger />
           </div>
-          <div className="h-[90%]"></div>
+          <div className="h-[80%]">
+            <ContentMessenger />
+          </div>
+          <div className="h-[10%] border-t-2 flex flex-row justify-center items-center gap-4">
+            <Input placeholder="Message" className="w-[80%]"/>
+            <Button variant="default">Envoyer</Button>
+          </div>
         </div>
       </div>
     </main>

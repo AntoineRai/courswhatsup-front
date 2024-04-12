@@ -58,7 +58,7 @@ const isNotConnected = () => {
 };
 
 const isLoggedIn = (): boolean => {
-  return localStorage.getItem("token") !== null;
+  return localStorage.getItem("theme") !== null;
 };
 
 export default HeaderProfile;

@@ -59,7 +59,7 @@ const SignUp = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(handleSubmit)}
-        className="max-w-md w-full flex flex-col gap-2"
+        className="max-w-md w-full flex flex-col gap-4"
       >
         <FormField
           control={form.control}
@@ -122,7 +122,7 @@ const SignUp = () => {
               <FormItem>
                 <FormLabel>Nom</FormLabel>
                 <FormControl>
-                  <Input placeholder="nom" type="text" {...field} />
+                  <Input placeholder="Nom" type="text" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
