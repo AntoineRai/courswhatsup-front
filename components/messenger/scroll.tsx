@@ -19,6 +19,7 @@ const Scroll = ({setSelectedUser}) => {
         },
       })
       .then((res) => {
+        console.log(res.data)
         setContacts(res.data);
       })
       .catch((err) => {});
@@ -27,7 +28,7 @@ const Scroll = ({setSelectedUser}) => {
   return (
     <ScrollArea className="h-full w-full">
       <div>
-        {contacts.map((contact) => (
+        {contacts.map((contact : Contact) => (
             <div key={contact.id} className="px-4 flex flex-row my-3" onClick={() => setSelectedUser(contact)}>
               <Avatar className="mr-4">
                 <AvatarImage
