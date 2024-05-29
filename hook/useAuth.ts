@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { verifyToken, getAccessToken, refreshAccessToken } from '../utils/auth';
+import { getAccessToken, refreshAccessToken, getMailFromToken } from '../utils/auth';
+import jwt from 'jsonwebtoken';
 
 interface User {
-  id: string;
   email: string;
 }
 
@@ -14,17 +14,11 @@ const useAuth = (): User | null => {
   useEffect(() => {
     const checkAuth = async () => {
       let accessToken = getAccessToken();
-      let user = verifyToken(accessToken);
-
-      if (!user) {
-        accessToken = await refreshAccessToken();
-        user = verifyToken(accessToken);
-      }
-
-      if (!user) {
+      if (!jwt.decode(accessToken)?.mail) {
         router.push('/login');
       } else {
-        setUser(user);
+        setUser(jwt.decode(accessToken)?.mail);
+        console.log("Utilisateur:" + user);
       }
     };
 

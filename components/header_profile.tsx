@@ -9,9 +9,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { User, Pen } from "lucide-react";
+import { User, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import jwt from "jsonwebtoken";
+import { useRouter } from "next/navigation";
 
 const HeaderProfile = () => {
   return (
@@ -28,15 +30,15 @@ const isConnected = () => {
         <DropdownMenuTrigger>
           <div className="flex flex-row items-center justify-center gap-2">
             <User />
-            Antoine
+            {jwt.decode(localStorage.getItem("accessToken"))?.mail}
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
           <DropdownMenuLabel>Mon profil</DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
-            <Pen className="pr-2" />
-            Editer mon profil
+          <DropdownMenuItem onClick={handleDisconnect}>
+          <Trash2 className="pr-2" />
+            Se déconnecter
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -58,7 +60,13 @@ const isNotConnected = () => {
 };
 
 const isLoggedIn = (): boolean => {
-  return localStorage.getItem("theme") !== null;
+  return localStorage.getItem("accessToken") !== null;
+};
+
+const handleDisconnect = () => {
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("refreshToken");
+  window.location.href = "/login";
 };
 
 export default HeaderProfile;

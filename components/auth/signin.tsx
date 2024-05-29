@@ -12,9 +12,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
+import axios from "axios";
+import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { CSR } from "@/config/CSR";
 
 const formSchema = z.object({
   emailAdress: z.string().email({ message: "Email invalide" }),
@@ -24,6 +26,9 @@ const formSchema = z.object({
 });
 
 const SignIn = () => {
+
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -33,7 +38,15 @@ const SignIn = () => {
   });
 
   const handleSubmit = () => {
-    console.log(form.getValues());
+    axios.post(`${CSR}/login/`, {
+      mail: form.getValues().emailAdress,
+      password: form.getValues().password,
+    })
+    .then((res) => {
+      localStorage.setItem("accessToken", res.data.accessToken);
+      localStorage.setItem("refreshToken", res.data.refreshToken);
+      router.push("/");
+    })
   };
 
   return (

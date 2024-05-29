@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken';
 import axios from 'axios';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 
 const ACCESS_TOKEN_SECRET = process.env.PRIVATE_KEY || 'secret';
 
@@ -16,6 +16,10 @@ export const verifyToken = (token: string | null): User | null => {
     return null;
   }
 };
+
+export const getMailFromToken = (token: string | null): string | null => {
+  return jwt.decode(token).mail
+}
 
 export const getAccessToken = (): string | null => {
   return localStorage.getItem('accessToken');

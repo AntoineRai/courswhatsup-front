@@ -14,6 +14,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import { CSR } from "@/config/CSR";
 
 const formSchema = z.object({
   emailAdress: z.string().email({ message: "Email invalide" }),
@@ -26,6 +28,9 @@ const formSchema = z.object({
 });
 
 const SignUp = () => {
+
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -39,7 +44,7 @@ const SignUp = () => {
 
   const handleSubmit = () => {
     axios
-      .post("http://localhost:3001/login/login", {
+      .post(`${CSR}/signup/"`, {
         mail: form.getValues().emailAdress,
         password: form.getValues().password,
         username: form.getValues().username,
@@ -48,7 +53,9 @@ const SignUp = () => {
         pp_url : "https://images.ctfassets.net/denf86kkcx7r/1udxHN2DROuEqnCR3257Rq/914ce7667088d07b5b60513ef6991d5b/chatons_migons"
       })
       .then((res) => {
-        console.log(res);
+        localStorage.setItem("accessToken", res.data.accessToken);
+        localStorage.setItem("refreshToken", res.data.refreshToken);
+        router.push("/");
       })
       .catch((err) => {
         console.log(err);
