@@ -20,12 +20,12 @@ export default function Home() {
 
   useEffect(() => {
     if (selectedUser) {
-      socket.emit("join_room", "abc123");
+      socket.emit("join_room", "abc1234");
     }
 
     return () => {
       if (selectedUser) {
-        socket.emit("leave_room", "abc123");
+        socket.emit("leave_room", "abc1234");
       }
     };
   }, [selectedUser]);
