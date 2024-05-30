@@ -17,12 +17,13 @@ export const verifyToken = (token: string | null): User | null => {
   }
 };
 
-export const getMailFromToken = (token: string | null): string | null => {
-  return jwt.decode(token).mail
+export const getMailFromToken = (token: any): string => {
+    const decodedToken = jwt.decode(token) as JwtPayload;
+    return decodedToken?.mail || '';
 }
 
-export const getAccessToken = (): string | null => {
-  return localStorage.getItem('accessToken');
+export const getAccessToken = (): string => {
+  return localStorage.getItem('accessToken') || '';
 };
 
 export const getRefreshToken = (): string | null => {

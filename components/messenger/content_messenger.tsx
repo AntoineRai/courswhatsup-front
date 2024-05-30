@@ -4,7 +4,7 @@ import axios from "axios";
 import useAuth from "@/hook/useAuth";
 import { CSR } from "@/config/CSR";
 
-const ContentMessenger = ({ selectedUser }) => {
+const ContentMessenger = ({ selectedUser }: { selectedUser: any }) => {
   const [messages, setMessages] = useState([]);
   const user = useAuth();
 
@@ -34,7 +34,7 @@ const ContentMessenger = ({ selectedUser }) => {
   return (
     <div className="h-full w-full overflow-hidden">
       <ScrollArea className="h-full w-full flex flex-col gap-4">
-        {messages.map((message) =>
+        {messages.map((message : any) =>
           message.sender === user
             ? RecieverMessage(message)
             : SenderMessage(message)
@@ -44,7 +44,7 @@ const ContentMessenger = ({ selectedUser }) => {
   );
 };
 
-const RecieverMessage = (message) => {
+const RecieverMessage = (message :any) => {
   return (
     <div className="w-full flex flex-row-reverse">
       <div
@@ -60,7 +60,7 @@ const RecieverMessage = (message) => {
   );
 };
 
-const SenderMessage = (message) => {
+const SenderMessage = (message : any) => {
   return (
     <div key={message.id} className="w-full flex flex-row">
       <div className="p-4 w-1/2 flex flex-row items-center border-2 rounded-xl gap-4 m-4">

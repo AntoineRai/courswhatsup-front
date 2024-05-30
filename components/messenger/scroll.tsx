@@ -7,7 +7,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import axios from "axios";
 import { CSR } from "@/config/CSR";
 
-const Scroll = ({setSelectedUser}) => {
+const Scroll = ({setSelectedUser} : {setSelectedUser : any}) => {
   const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const Scroll = ({setSelectedUser}) => {
   return (
     <ScrollArea className="h-full w-full">
       <div>
-        {contacts.map((contact : Contact) => (
+        {contacts.map((contact : any) => (
             <div key={contact.id} className="px-4 flex flex-row my-3" onClick={() => setSelectedUser(contact)}>
               <Avatar className="mr-4">
                 <AvatarImage
