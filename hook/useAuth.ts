@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { getAccessToken, refreshAccessToken, getMailFromToken } from '../utils/auth';
-import jwt from 'jsonwebtoken';
+import { getAccessToken, getMailFromToken } from '../utils/auth';
+import jwt, {JwtPayload} from 'jsonwebtoken';
 
 interface User {
   email: string;
@@ -14,10 +14,11 @@ const useAuth = (): User | null => {
   useEffect(() => {
     const checkAuth = async () => {
       let accessToken = getAccessToken();
-      if (!jwt.decode(accessToken)?.mail) {
+      if (!getMailFromToken(accessToken)) {
         router.push('/login');
       } else {
-        setUser(jwt.decode(accessToken)?.mail);
+        const decodedToken = jwt.decode(accessToken) as JwtPayload;
+        setUser(decodedToken?.mail);
         console.log("Utilisateur:" + user);
       }
     };

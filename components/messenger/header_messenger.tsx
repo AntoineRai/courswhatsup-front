@@ -1,7 +1,7 @@
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-const HeaderMessenger = ({ selectedUser  }) => {
+const HeaderMessenger = ({ selectedUser  } : { selectedUser : any}) => {
   return (
     <div className="px-4 flex flex-row justify-center items-center">
       {selectedUser ? (
