@@ -14,6 +14,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import jwt from "jsonwebtoken";
 import { useRouter } from "next/navigation";
+import { getMailFromToken } from "@/utils/auth";
 
 const HeaderProfile = () => {
   return (
@@ -30,7 +31,7 @@ const isConnected = () => {
         <DropdownMenuTrigger>
           <div className="flex flex-row items-center justify-center gap-2">
             <User />
-            {jwt.decode(localStorage.getItem("accessToken"))?.mail}
+            {getMailFromToken(localStorage.getItem("accessToken"))}
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
